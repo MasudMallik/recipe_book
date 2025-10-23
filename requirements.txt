@@ -4,3 +4,4 @@ bcrypt
 pyjwt
 pymongo
 pydantic
+jinja2
