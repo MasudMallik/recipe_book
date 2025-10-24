@@ -6,9 +6,9 @@ from pydantic import BaseModel
 from typing import List,Optional
 
 app=FastAPI()
-app.mount("/static",StaticFiles(directory="static"),name="static")
-templates=Jinja2Templates(directory="templates")
+app.mount("/static",StaticFiles(directory="recipe_book/static"),name="static")
+templates=Jinja2Templates(directory="recipe_book/templates")
 
-@app.get("/")
-def home():
-    return {"message":"hello world"}
+@app.get("/",response_class=HTMLResponse)
+def home(request):
+    return templates.TemplateResponse("login.html",{"request": request})
